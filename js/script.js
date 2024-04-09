@@ -1,15 +1,23 @@
 const APIkey = "29c468e06abba699f80dc5382f6c0c90"
-const queryURL = 'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={APIkey}';
 
-let city = document.getElementById('cityname').value;
+$("form").on("submit",function(event){
+    event.preventDefault();
+    console.log('hi eric')
 
-const cityName = JSON.stringify(city);
+    
+    let city = event.target[0].value;
+    const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}`;
 
-localStorage.setItem('cityname', cityName)
+    fetch(queryURL)
+    .then(response => {
+    return response.json()
+    })
+    .then(data => generateWeather(data))
+    .catch(error => console.log('ERROR'))
+    localStorage.setItem('cityname', city)
+})
 
-fetch(queryURL)
-.then(response => {
-   return response.json()
-   })
-.then(data => console.log(data))
-.catch(error => console.log('ERROR'))
+function generateWeather(weather){
+    console.log(weather)
+    
+}

@@ -9,11 +9,11 @@
 <body>
     <header>Weather Dashboard</header>
     <div id="search">
-        <form action="/submit-form" method="POST">
+        <form id="form" action="/submit-form" method="POST">
             <label for="cityName">City Name:</label><br>
             <input type="text" id="cityname" name="name" required><br>
 
-            <input type="submit" value="A submit button">
+            <input type="submit" id="submit" value="A submit button">
         </form>
     </div>
     <div id="currentForecast"></div>
